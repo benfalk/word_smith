@@ -2,23 +2,27 @@ defmodule RemoveAccentsBench do
   use Benchfella
   alias WordSmith.RemoveAccents
 
-  bench "with tail-call optimization", [string: gen_string()] do
+  bench "byte-size: #{1*24}", [string: gen_string(1)] do
     RemoveAccents.remove_accents(string)
   end
 
-  bench "without tail-call optimization", [string: gen_string()] do
-    RemoveAccents.remove_accents_no_tail_call(string)
+  bench "byte-size: #{10*24}", [string: gen_string(10)] do
+    RemoveAccents.remove_accents(string)
   end
 
-  bench "as io-data (non-recursive)", [string: gen_string()] do
-    RemoveAccents.remove_accents_iodata(string)
+  bench "byte-size: #{100*24}", [string: gen_string(100)] do
+    RemoveAccents.remove_accents(string)
   end
 
-  bench "as io-data (recursive)", [string: gen_string()] do
-    RemoveAccents.remove_accents_iodata_rec(string)
+  bench "byte-size: #{1000*24}", [string: gen_string(1000)] do
+    RemoveAccents.remove_accents(string)
   end
 
-  defp gen_string do
-    String.duplicate("Ĥĕľŀö Ŵóŕƚƌ ©", 3000)
+  bench "byte-size: #{10000*24}", [string: gen_string(10000)] do
+    RemoveAccents.remove_accents(string)
+  end
+
+  defp gen_string(times \\ 1) do
+    String.duplicate("Ĥĕľŀö Ŵóŕƚƌ ©", times)
   end
 end
