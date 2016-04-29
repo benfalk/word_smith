@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/benfalk/word_smith.svg?branch=master)](https://travis-ci.org/benfalk/word_smith)
+
 # WordSmith
 
 >  General text utility library to help with string manipulation not
