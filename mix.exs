@@ -3,7 +3,7 @@ defmodule WordSmith.Mixfile do
 
   def project do
     [app: :word_smith,
-     version: "0.1.1",
+     version: "0.1.2",
      elixir: "~> 1.1",
      description: description,
      package: package,

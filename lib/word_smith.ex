@@ -24,4 +24,22 @@ defmodule WordSmith do
   def remove_accents(any) do
     WordSmith.RemoveAccents.remove_accents(to_string(any))
   end
+
+  @doc """
+  Removes un-needed left and right padding from a string and compacts all excess
+  whitespace in single spaces.  This is based on the Active Support feature from
+  Rails and functions similiarly:
+
+  http://apidock.com/rails/String/squish
+
+      iex> WordSmith.squish("\\nHello \\t  World!\\n  ")
+      "Hello World!"
+  """
+  def squish(string) when is_binary(string) do
+    WordSmith.Squish.squish(string)
+  end
+
+  def squish(any) do
+    WordSmith.Squish.squish(to_string(any))
+  end
 end

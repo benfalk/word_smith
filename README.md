@@ -13,6 +13,11 @@
   WordSmith.remove_accents("Ĥĕľŀö Ŵóŕƚƌ ©") # => "Hello World (C)"
 ```
 
+### Squish Strings
+
+``` elixir
+  WordSmith.squish("\\nHello \\t  World!\\n  ") #=> "Hello World!"
+```
 
 ## Installation
 

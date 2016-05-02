@@ -1,5 +1,5 @@
 defmodule WordSmith.RemoveAccentsTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   alias WordSmith.RemoveAccents
 
   test "non-accented text comes through the same" do
