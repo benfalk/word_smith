@@ -13,7 +13,7 @@ defmodule WordSmith.RemoveAccents do
     end
   end
 
-  defp remove_accents(<<char::utf8 , rest::binary>>, acc) do
+  defp remove_accents(<<char::binary-1, rest::binary>>, acc) do
     remove_accents(rest, [char|acc])
   end
 

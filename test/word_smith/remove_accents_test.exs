@@ -9,4 +9,12 @@ defmodule WordSmith.RemoveAccentsTest do
   test "accented text comes through 'un-accented'" do
     assert RemoveAccents.remove_accents("hello world ©") == "hello world (C)"
   end
+
+  test "characters not found in the map that are outside normal ascii range work" do
+    assert RemoveAccents.remove_accents("Molokaʻi Princess") == "Molokaʻi Princess"
+  end
+
+  test "characters in and out the map that outside normal ascii range work" do
+    assert RemoveAccents.remove_accents("Molokaʻi Ƥrincess") == "Molokaʻi Princess"
+  end
 end
