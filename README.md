@@ -16,7 +16,7 @@
 ### Squish Strings
 
 ``` elixir
-  WordSmith.squish("\\nHello \\t  World!\\n  ") #=> "Hello World!"
+  WordSmith.squish("\nHello \t  World!\n  ") #=> "Hello World!"
 ```
 
 ## Installation
