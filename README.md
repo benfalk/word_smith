@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/benfalk/word_smith.svg?branch=master)](https://travis-ci.org/benfalk/word_smith)
+[![Hex Version](https://img.shields.io/hexpm/v/word_smith.svg)](https://hex.pm/packages/word_smith)
 
 # WordSmith
 
