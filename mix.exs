@@ -3,13 +3,13 @@ defmodule WordSmith.Mixfile do
 
   def project do
     [app: :word_smith,
-     version: "0.1.2",
-     elixir: "~> 1.1",
-     description: description,
-     package: package,
+     version: "0.1.3",
+     elixir: "~> 1.7",
+     description: description(),
+     package: package(),
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps]
+     deps: deps()]
   end
 
   def application do
@@ -18,8 +18,7 @@ defmodule WordSmith.Mixfile do
 
   defp deps do
     [
-      {:earmark, "~> 0.1", only: :dev},
-      {:ex_doc, "~> 0.11", only: :dev},
+      {:ex_doc, "~> 0.19", only: :dev, runtime: false},
       {:benchfella, "~> 0.3.0", only: :dev}
     ]
   end
