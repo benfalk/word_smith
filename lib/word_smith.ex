@@ -28,7 +28,7 @@ defmodule WordSmith do
   @doc """
   Removes un-needed left and right padding from a string and compacts all excess
   whitespace in single spaces.  This is based on the Active Support feature from
-  Rails and functions similiarly:
+  Rails and functions similarly:
 
   http://apidock.com/rails/String/squish
 
