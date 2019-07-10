@@ -23,7 +23,7 @@ defmodule SquishBench do
 
   def libs_squish(str) do
     str
-    |> String.strip
+    |> String.trim
     |> String.replace(~r/[[:space:]]+/, " ")
   end
 

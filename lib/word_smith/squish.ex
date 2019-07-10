@@ -1,10 +1,10 @@
 defmodule WordSmith.Squish do
-  import String, only: [replace: 3, strip: 1]
+  import String, only: [replace: 3, trim: 1]
   @moduledoc false
 
   @doc false
   def squish(str) when is_binary(str) and byte_size(str) < 150, do: squish(str, [])
-  def squish(str) when is_binary(str), do: str |> strip |> replace(~r/[[:space:]]+/, " ")
+  def squish(str) when is_binary(str), do: str |> trim |> replace(~r/[[:space:]]+/, " ")
 
   # left-trimming
   defp squish(" " <> rest, []), do: squish(rest, [])
