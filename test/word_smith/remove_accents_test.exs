@@ -11,10 +11,10 @@ defmodule WordSmith.RemoveAccentsTest do
   end
 
   test "characters not found in the map that are outside normal ascii range work" do
-    assert RemoveAccents.remove_accents("Molokaʻi Princess") == "Molokaʻi Princess"
+    assert RemoveAccents.remove_accents("Molokaʻi Princess") == "Moloka'i Princess"
   end
 
   test "characters in and out the map that outside normal ascii range work" do
-    assert RemoveAccents.remove_accents("Molokaʻi Ƥrincess") == "Molokaʻi Princess"
+    assert RemoveAccents.remove_accents("Molokaʻi Ƥrincess") == "Moloka'i Princess"
   end
 end

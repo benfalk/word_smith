@@ -2,14 +2,16 @@ defmodule WordSmith.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :word_smith,
-     version: "0.1.3",
-     elixir: "~> 1.7",
-     description: description(),
-     package: package(),
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     deps: deps()]
+    [
+      app: :word_smith,
+      version: "0.2.0",
+      elixir: "~> 1.7",
+      description: description(),
+      package: package(),
+      build_embedded: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
+      deps: deps()
+    ]
   end
 
   def application do
