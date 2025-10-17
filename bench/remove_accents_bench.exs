@@ -1,28 +1,27 @@
 defmodule RemoveAccentsBench do
-  use Benchfella
-  alias WordSmith.RemoveAccents
+  @base "Ĥĕľŀö Ŵóŕƚƌ ©"
+  @size byte_size(@base)
 
-  bench "byte-size: #{1*24}", [string: gen_string(1)] do
-    RemoveAccents.remove_accents(string)
+  def run(string) do
+    WordSmith.remove_accents(string)
   end
 
-  bench "byte-size: #{10*24}", [string: gen_string(10)] do
-    RemoveAccents.remove_accents(string)
-  end
+  def gen_string(times), do: String.duplicate(@base, times)
 
-  bench "byte-size: #{100*24}", [string: gen_string(100)] do
-    RemoveAccents.remove_accents(string)
-  end
-
-  bench "byte-size: #{1000*24}", [string: gen_string(1000)] do
-    RemoveAccents.remove_accents(string)
-  end
-
-  bench "byte-size: #{10000*24}", [string: gen_string(10000)] do
-    RemoveAccents.remove_accents(string)
-  end
-
-  defp gen_string(times \\ 1) do
-    String.duplicate("Ĥĕľŀö Ŵóŕƚƌ ©", times)
-  end
+  def byte_size(times), do: @size * times
 end
+
+Benchee.run(
+  %{
+    "remove_accents" => fn input -> RemoveAccentsBench.run(input) end
+  },
+  inputs: %{
+    "#{RemoveAccentsBench.byte_size(1)} bytes" => RemoveAccentsBench.gen_string(1),
+    "#{RemoveAccentsBench.byte_size(10)} bytes" => RemoveAccentsBench.gen_string(10),
+    "#{RemoveAccentsBench.byte_size(100)} bytes" => RemoveAccentsBench.gen_string(100),
+    "#{RemoveAccentsBench.byte_size(1000)} bytes" => RemoveAccentsBench.gen_string(1000),
+    "#{RemoveAccentsBench.byte_size(10000)} bytes" => RemoveAccentsBench.gen_string(10000),
+    "#{RemoveAccentsBench.byte_size(100_000)} bytes" => RemoveAccentsBench.gen_string(100_000)
+  },
+  warmup: 5
+)

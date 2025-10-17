@@ -1,27 +1,30 @@
-defmodule WordSmith.Mixfile do
+defmodule WordSmith.MixProject do
   use Mix.Project
 
   def project do
     [
       app: :word_smith,
       version: "0.2.0",
-      elixir: "~> 1.7",
+      elixir: "~> 1.15",
       description: description(),
       package: package(),
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
+      elixirc_paths: elixirc_paths(Mix.env()),
       deps: deps()
     ]
   end
 
   def application do
-    [applications: [:logger]]
+    [
+      extra_applications: [:logger]
+    ]
   end
 
   defp deps do
     [
-      {:ex_doc, "~> 0.19", only: :dev, runtime: false},
-      {:benchfella, "~> 0.3.0", only: :dev}
+      {:benchee, "~> 1.3", only: :dev},
+      {:ex_doc, "~> 0.36", only: :dev, runtime: false}
     ]
   end
 
@@ -39,4 +42,7 @@ defmodule WordSmith.Mixfile do
       licenses: ["MIT License"]
     ]
   end
+
+  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(_), do: ["lib"]
 end

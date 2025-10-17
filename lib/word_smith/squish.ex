@@ -28,8 +28,8 @@ defmodule WordSmith.Squish do
   defp squish("    " <> rest, acc), do: squish(" " <> rest, acc)
 
   # flow-through
-  defp squish(<<char::binary-1, rest::binary>>, acc), do: squish(rest, [char|acc])
+  defp squish(<<char::binary-1, rest::binary>>, acc), do: squish(rest, [char | acc])
 
   # finished
-  defp squish("", acc), do: Enum.reverse(acc) |> IO.iodata_to_binary
+  defp squish("", acc), do: Enum.reverse(acc) |> IO.iodata_to_binary()
 end

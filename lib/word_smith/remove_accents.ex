@@ -7,10 +7,17 @@ defmodule WordSmith.RemoveAccents do
   def remove_accents(str) when is_binary(str), do: remove_accents(str, [])
 
   for pair <- File.stream!(@accents_file, [], :line) do
-    [char, replacement] = pair |> String.trim() |> String.split("\t")
+    case pair |> String.trim() |> String.split("\t") do
+      [char] ->
+        # No replacement, just strip it
+        defp remove_accents(unquote(char) <> rest, acc) do
+          remove_accents(rest, acc)
+        end
 
-    defp remove_accents(unquote(char) <> rest, acc) do
-      remove_accents(rest, [unquote(replacement) | acc])
+      [char, replacement] ->
+        defp remove_accents(unquote(char) <> rest, acc) do
+          remove_accents(rest, [unquote(replacement) | acc])
+        end
     end
   end
 
