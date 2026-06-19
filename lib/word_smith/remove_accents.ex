@@ -6,7 +6,7 @@ defmodule WordSmith.RemoveAccents do
   @doc false
   def remove_accents(str) when is_binary(str), do: remove_accents(str, [])
 
-  for pair <- File.stream!(@accents_file, [], :line) do
+  for pair <- File.stream!(@accents_file) do
     case pair |> String.trim() |> String.split("\t") do
       [char] ->
         # No replacement, just strip it
